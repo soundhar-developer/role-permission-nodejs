@@ -19,7 +19,7 @@ app.post("/api/auth/signin", controller.signin);
 /*
 ** Route purpose : Given menu permission based on roles
 */
-app.post("/api/auth/rolePermission", [verifymiddleware.checkDuplicateEmail, authJwtMiddleware.verifyToken], controller.accessMenuBasedOnRole);
+app.post("/api/auth/rolePermission", [authJwtMiddleware.verifyToken], controller.accessMenuBasedOnRole);
   
 /*
 ** Route purpose : Create user

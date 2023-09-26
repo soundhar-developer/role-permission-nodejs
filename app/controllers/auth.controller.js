@@ -91,6 +91,12 @@ exports.accessMenuBasedOnRole = async (req, res) => {
 ** Api purpose : Create user
 */
 exports.createUser = (req, res) => {
+
+    if (!req.body.email && !req.body.password && !req.body.role) {
+        return res.status(400).send({
+          message: "Email, Password and Role should not be empty."
+        });
+    }
     User.create({
       username: req.body.username,
       email: req.body.email,
